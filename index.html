@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Radhuu ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: black;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Intro screen */
+#intro {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#intro h1 {
+  font-size: 35px;
+  animation: fadeIn 3s ease-in-out;
+}
+
+/* Main hidden initially */
+#main {
+  display: none;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Password */
+#lock {
+  margin-top: 50px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Typing effect */
+#typing {
+  font-size: 22px;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-100vh);}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+
+<script>
+function startSite() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("main").style.display = "block";
+}
+
+// Password check
+function checkPassword() {
+  let pass = document.getElementById("pass").value;
+  if(pass === "radhuu") {
+    document.getElementById("lock").style.display = "none";
+    startTyping();
+  } else {
+    alert("Wrong password 😝");
+  }
+}
+
+// Typing effect
+let text = "I lovee youuu sooo much myy radhuu 💗💘 ... you aree the besttestt person everr, and i am veryy luckyy to havee youu in myy lifee 🫂❤️ ... and i wish your every dream gets fulfilled ✨ ... and i am always there with you forever and ever and evrr 💖";
+let i = 0;
+
+function startTyping() {
+  let speed = 50;
+  function type() {
+    if (i < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
+
+// Floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.innerHTML = "💖";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}, 300);
+</script>
+
+</head>
+
+<body>
+
+<!-- 🎬 INTRO -->
+<div id="intro" onclick="startSite()">
+  <h1>Tap to enter ❤️</h1>
+</div>
+
+<!-- 🎵 MUSIC -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 💖 MAIN -->
+<div id="main">
+
+  <h1>Happy Birthday My Radhuu Babyy 🎂❤️</h1>
+
+  <!-- 🔐 PASSWORD -->
+  <div id="lock">
+    <p>Enter Secret Password 🔐</p>
+    <input type="password" id="pass" placeholder="Hint: her nickname">
+    <br>
+    <button onclick="checkPassword()">Unlock 💖</button>
+  </div>
+
+  <!-- 💌 MESSAGE -->
+  <p id="typing"></p>
+
+  <!-- 📸 PHOTOS -->
+  <h2>Our Memories 📸</h2>
+  <img src="photo1.jpg" width="200">
+  <img src="photo2.jpg" width="200">
+
+  <!-- 🎁 SURPRISE -->
+  <br><br>
+  <button onclick="alert('I LOVE YOU FOREVER ❤️')">Final Surprise 🎁</button>
+
+</div>
+
+</body>
+</html>
